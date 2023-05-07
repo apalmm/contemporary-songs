@@ -2,6 +2,19 @@
 
 {% block title %}Contemporary Song Recommendation Application{% endblock %}
 
-{% block header %}
-<h1>Song Search</h1>
+{% block main %}
+<div class="bg-gradient-dark row">
+    <div class='text-center p-3 border-bottom'>
+      <h1 class="text-dark">Contemporary Song Recommendation System</h1>
+      <p class="text-center m-auto">Revamp your old rusty and dusty playlists with our recommendation system! Simply start by entering a song title into the search field below, and let us handle the rest. &#128521;</p>
+    </div>
+</div>
+<div class="row m-3 shadow-sm p-3">
+    <h2>
+        <label for='name' class='form-label'>Song Title:</label>
+    </h2>
+    <div class="mb-3 input-group">
+        <input id="name" type="text" placeholder="Name" class="form-control" name='name'>
+    </div>
+</div>
 {% endblock %}

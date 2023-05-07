@@ -8,3 +8,8 @@ app = Flask(__name__)
 def index():
     """Displays search form and eventual table"""
     return render_template('index.html')
+
+@app.route('/code', methods=['GET'])
+def code():
+    """Displays search form and eventual table"""
+    return render_template('code.html')
