@@ -1,0 +1,20 @@
+{% if songs %}
+<table class='table ph-3 bg-light'>
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Artist</th>
+      <th scope="col">Song ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for song in songs %}
+    <tr class='p-3'>
+        <td class='name'>{{song[0]}}</td>
+        <td class='song-title'>{{song[1]}}</td>
+        <td class='song-title'>{{song[2]}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
