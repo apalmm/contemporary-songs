@@ -1,3 +1,7 @@
+{% extends 'layout.html' %}
+
+{% block title %}Contemporary Song Recommendation Application{% endblock %}
+{% block main %}
 {% if songs %}
 <table class='table ph-3 bg-white'>
   <thead>
@@ -6,7 +10,6 @@
       <th scope="col">Artist</th>
       <th scope="col">ID</th>
       <th scope="col">Album</th>
-      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -14,15 +17,13 @@
     <tr class='p-3'>
         <td style="max-width: 200px;" class='name fw-bold'>{{song[0]}}</td>
         <td class='song-title'>{{song[1]}}</td>
-        <td class="song-id">{{song[2]}}</td>
-        {% if song[3] %}
-          <td><img style="max-width: 200px;" src='{{song[3]}}'/></td>
+        <td class='song-title'>{{song[3]}}</td>
+        {% if song[2] %}
+          <td><img style="max-width: 200px;" src='{{song[2]}}'/></td>
         {% endif %}
-        <td class='justify-content-center text-center'>
-          <button type='button' class='match-btn mt-3 btn btn-lg btn-success'>Match</button>
-        </td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
 {% endif %}
+{% endblock %}

@@ -1,7 +1,9 @@
 """Create Flask App for song recommendation Application"""
 
 from flask import Flask, render_template, redirect, make_response, request
-from db import get_songs
+from recommendation_models import query
+
+from db import get_songs, get_song_from_id
 app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
@@ -11,7 +13,6 @@ def index():
 
 @app.route('/home', methods=['POST', 'GET'])
 def home():
-    print('helllo')
     return render_template('index.html')
 
 @app.route('/search')
@@ -33,8 +34,7 @@ def search():
 
     if querying:
         songs = get_songs(query_filters)
-        
-        print(songs)
+        #song id = for song in songs: song[2]
 
     template = render_template('results.html',
                                 songs=songs)
@@ -46,3 +46,13 @@ def search():
 def code():
     """Displays search form and eventual table"""
     return render_template('code.html')
+
+@app.route('/song-description/<string:song_id>')
+def describe_song(song_id):
+    similar_songs = []
+    new_ids = query(song_id, 10)
+
+    for id in new_ids:
+        similar_songs.append(get_song_from_id(id))
+            
+    return render_template('song.html', songs=similar_songs)
