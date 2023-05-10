@@ -1,7 +1,7 @@
 """Create Flask App for song recommendation Application"""
 
 from flask import Flask, render_template, redirect, make_response, request
-from recommendation_models import query
+from models import queryWeight, queryRelativeSong, describe_song, describe_song_decade
 
 from db import get_songs, get_song_from_id
 app = Flask(__name__)
@@ -42,17 +42,23 @@ def search():
     res = make_response(template)
     return res
 
-@app.route('/code', methods=['GET'])
-def code():
-    """Displays search form and eventual table"""
-    return render_template('code.html')
-
 @app.route('/song-description/<string:song_id>')
-def describe_song(song_id):
+def sim_songs(song_id):
     similar_songs = []
-    new_ids = query(song_id, 10)
+    relative_songs = []
 
-    for id in new_ids:
+    old_song = get_song_from_id(song_id)
+    old_song_description = describe_song(song_id)
+
+    rel_description = describe_song_decade(song_id)
+
+    new_recs, songs_names, song_ids = queryWeight(song_id, 5)
+    new_recs, songs_names, relative_ids = queryRelativeSong(song_id, 5)
+
+    for id in song_ids:
         similar_songs.append(get_song_from_id(id))
+    
+    for id in relative_ids:
+        relative_songs.append(get_song_from_id(id))
             
-    return render_template('song.html', songs=similar_songs)
+    return render_template('song.html', rel_desc=rel_description, old_song_desc=old_song_description, old_song=old_song, songs=similar_songs, relative_songs=relative_songs)

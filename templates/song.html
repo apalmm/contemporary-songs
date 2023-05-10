@@ -1,29 +1,76 @@
 {% extends 'layout.html' %}
 
-{% block title %}Contemporary Song Recommendation Application{% endblock %}
+{% block title %}Recommendations{% endblock %}
 {% block main %}
-{% if songs %}
-<table class='table ph-3 bg-white'>
-  <thead>
-    <tr>
-      <th scope="col">Title</th>
-      <th scope="col">Artist</th>
-      <th scope="col">ID</th>
-      <th scope="col">Album</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for song in songs %}
-    <tr class='p-3'>
-        <td style="max-width: 200px;" class='name fw-bold'>{{song[0]}}</td>
-        <td class='song-title'>{{song[1]}}</td>
-        <td class='song-title'>{{song[3]}}</td>
-        {% if song[2] %}
-          <td><img style="max-width: 200px;" src='{{song[2]}}'/></td>
-        {% endif %}
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-{% endif %}
+<div class="row">
+  <h1 class="text-success border-bottom m-2 p-3 text-center">Modern Recommendation's For '{{old_song[0]}}'<br/>by {{old_song[1]}}</h1>
+  <div class="border-bottom col text-center">
+    <div class="border-bottom m-2 p-3">
+      <h1>&#127925; Similar Songs &#127925;</h1>
+      <p class="m-2">These contemporary songs are similar to your old song in terms of characteristics like key, popularity, danceability, and liveness. They represent a 1-to-1 kind of match from older decade to newer decade (after 2010). Overall, they should sound similar to your old chosen song. I hope you enjoy giving them a listen &#128522;</p><br/>
+    </div>
+    {% if songs %}
+    <table class='table ph-3 bg-white'>
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Artist</th>
+          <th scope="col">ID</th>
+          <th scope="col">Album</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for song in songs %}
+        <tr class='p-3'>
+            <td style="max-width: 200px;" class='name fw-bold'>{{song[0]}}</td>
+            <td class='song-title'>{{song[1]}}</td>
+            <td class='song-title'>{{song[3]}}</td>
+            {% if song[2] %}
+              <td><img style="max-width: 200px;" src='{{song[2]}}'/></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+    <div class="p-3 text-center">
+      <h3>&#127908; Similar Song Explanation:</h3>
+      <p>{{old_song_desc}} &#128512;</p>
+    </div>
+  </div>
+  <div class="border-bottom col text-center">
+    <div class="border-bottom m-2 p-3">
+      <h1>&#127925; Trend-Extrapolated Songs &#127925;</h1>
+      <p class="m-2">These contemporary songs are similar to your old song in terms of 'relativeness.' They represent a model-extrapolated version of your older song to a contemporary one. (e.g. If your song had low danceability compared to its time period, this song also has a low danceability but in comparison to post-2010 songs). This process is repeated with many characteristics of both songs.</p>
+    </div>
+    {% if relative_songs %}
+    <table class='table ph-3 bg-white'>
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Artist</th>
+          <th scope="col">ID</th>
+          <th scope="col">Album</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for song in relative_songs %}
+        <tr class='p-3'>
+            <td style="max-width: 200px;" class='name fw-bold'>{{song[0]}}</td>
+            <td class='song-title'>{{song[1]}}</td>
+            <td class='song-title'>{{song[3]}}</td>
+            {% if song[2] %}
+              <td><img style="max-width: 200px;" src='{{song[2]}}'/></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+    <div class="p-3 text-center">
+      <h3>&#127897; Relative Song Explanation:</h3>
+      <p>{{rel_desc}} &#128519;</p>
+    </div>
+  </div>
+</div>
 {% endblock %}

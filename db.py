@@ -28,7 +28,7 @@ df = pd.read_csv(
 )
 
 def get_songs(filters):
-    df_filter = df[df.name.str.contains(filters['name'], na=False) & df.artists.str.contains(filters['artist'], na=False)].head(30)
+    df_filter = df[df.name.str.contains(filters['name'], na=False) & df.artists.str.contains(filters['artist'], na=False)].head(25)
     df_filter.reset_index()  # make sure indexes pair with number of rows
 
     song_array = []
