@@ -335,17 +335,17 @@ def describe_song_decade(song_id):
             
         #Generic high, low phrases
         "HIGH":[f"Wow! Your chosen song has high levels of {feature} compared to most other songs from the {past_decade}s. That's pretty neat. ",
-                f"This song is above average in terms of {feature} for its time period, and it sounds awesome. "
-                f"I am impressed with the {feature} of this song. It is very high relative to most other songs from the {past_decade}! "
-                f"This song has an incredibly high {feature}, which is really unique for its decade of release, the {past_decade}s! "
+                f"This song is above average in terms of {feature} for its time period, and it sounds awesome. ",
+                f"I am impressed with the {feature} of this song. It is very high relative to most other songs from the {past_decade}! ",
+                f"This song has an incredibly high {feature}, which is really unique for its decade of release, the {past_decade}s! ",
                ],
             
         "LOW": [f"This song is lacking in terms of {feature}, but that is the beauty of it. ",
-                f"In terms of {feature} in the {past_decade}s, this song is below average. "
+                f"In terms of {feature} in the {past_decade}s, this song is below average. ",
                ],
         "AVG": [f"Your chosen song is just average in terms of {feature}. It sounds great. ",
                 f"In terms of {feature}, this song is quite average. Still sounds nice though. ",
-                f"This song is nothing out of the blue in terms of this song's {feature}. Especially in the context of other songs from the {past_decade}s, but even this fact has its own beauty. "
+                f"This song is nothing out of the blue in terms of this song's {feature}. Especially in the context of other songs from the {past_decade}s, but even this fact has its own beauty. ",
                ],
             
         #High, low phrases for danceability and energy
