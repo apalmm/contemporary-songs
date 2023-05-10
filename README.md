@@ -4,6 +4,8 @@
 
 ### Setting up the environment variables.
 
+Begin setup by first ensuring that Flask is installed.
+
 In order to run our python server in your front end, you need to first set the environment variables (spotipy_client_id, and spotipy_client_secret) within your local environment to allow you to access spotipy's API as an authenticated user.
 
 Doing this is simple.

@@ -23,7 +23,7 @@ fields = [
 ]
 
 df = pd.read_csv(
-    'kaggle/data.csv', 
+    'kaggle/data2.csv', #cleaned version
     usecols=fields
 )
 
